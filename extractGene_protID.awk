@@ -1,13 +1,13 @@
 #!/bin/awk -f
 {
   for (i=1; i<=NF; ++i) {  # Loop through each field
-    if ($i ~ "protein_id=") {  # Check if field starts with "protein_id_" followed by non-space characters
+    if ($i ~ /^protein_id=[^ ]+/) {  # Check if field starts with "protein_id_" followed by non-space characters
       protein_id = $i        # Store the entire protein_id field value (including prefix)
       break;                  # Exit the loop once found
     } 
     }
   for (j=1; j<=NF; ++j) {  # Loop through each field
-    if ($j ~ "gene_name=") {  # Check if field starts with "protein_id_" followed by non-space characters
+    if ($j ~ /^gene=[^ ]+/) {  # Check if field starts with "protein_id_" followed by non-space characters
       gene_id = $j        # Store the entire protein_id field value (including prefix)
       break;                  # Exit the loop once found
     } 
